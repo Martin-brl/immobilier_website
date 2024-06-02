@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="styles.css"> <!-- Référence au fichier CSS combiné -->
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Styles pour centrer la barre de recherche */
+        .search-container {
+            text-align: center;
+            margin-top: 100px; /* Espacement de la barre de recherche par rapport au haut de la page */
+            background-image: url('background.jpeg'); /* Chemin vers l'image de fond */
+            background-size: 100% 100%; /* Adapter la taille de l'image pour qu'elle remplisse entièrement la zone sans être déformée */
+            background-repeat: no-repeat; /* Ne pas répéter l'image */
+            padding: 50px; /* Ajouter un peu de marge intérieure pour améliorer la lisibilité */
+            border-radius: 20px; /* Ajouter une bordure arrondie */
+            max-width: 500px; /* Définir une largeur maximale pour la section */
+            margin-left: auto; /* Centrer horizontalement */
+            margin-right: auto; /* Centrer horizontalement */
+        }
+        .search-container input[type="text"] {
+            width: 70%; /* Largeur de la barre de recherche */
+        }
+        .search-container button {
+            width: 15%; /* Largeur du bouton de recherche */
+        }
+    </style>
 </head>
 <body class="search-page"> <!-- Ajout de la classe search-page au body -->
     <header>
@@ -25,25 +46,13 @@
         </nav>
     </header>
     <!--*-->
-    <section>
+    <section class="search-container">
         <h2>Trouvez la propriété de vos rêves</h2>
         <form action="search.php" method="GET">
-            <input type="text" name="location" placeholder="Ville">
-            <input type="number" name="min_price" placeholder="Prix Minimum" min="0">
-            <input type="number" name="max_price" placeholder="Prix Maximum" min="0">
-            <select name="property_type">
-                <option value="">Type de Propriété</option>
-                <option value="Maison">Maison</option>
-                <option value="Appartement">Appartement</option>
-                <option value="Studio">Studio</option>
-                <option value="Loft">Loft</option>
-                <option value="Duplex">Commercial</option>
-            </select>
+            <input type="text" name="query" placeholder="Rechercher...">
             <button type="submit">Rechercher</button>
         </form>
     </section>
-
-
 
     <!-- ************************************************************************************************************************-->
     <footer>
