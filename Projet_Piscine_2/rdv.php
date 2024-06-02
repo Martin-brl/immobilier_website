@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     die("not logged");
 }
+
 // Connexion à la base de données
 $servername = "localhost";
 $username = "root";
@@ -16,27 +17,40 @@ $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Vérifier la connexion
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    alert("erreur de connexion à la bas de donnée");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['action']) && $_POST['action'] == 'add') {
         $client_id = $_SESSION['user_id'];
-        $agent_id = $_POST['agent_id'];
-        $propriete_id = $_POST['propriete_id'];
+        $adresse = $_POST['adresse'];
         $date = $_POST['date'];
         $heure = $_POST['heure'];
         $status = 0; // 0 = non confirmé, 1 = confirmé
 
-        $stmt = $conn->prepare('INSERT INTO rendezvous (client_id, agent_id, propriete_id, date, heure, status) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$client_id, $agent_id, $propriete_id, $date, $heure, $status]);
-        echo json_encode(['status' => 'success']);
-        exit;
+        // Retrieve propriete_id from the provided adresse
+        $stmt = $conn->prepare('SELECT id FROM proprietes WHERE adresse = ?');
+        $stmt->bind_param('s', $adresse);
+        $stmt->execute();
+        $stmt->bind_result($propriete_id);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($propriete_id) {
+            $stmt = $conn->prepare('INSERT INTO rendezvous (client_id, propriete_id, date, heure, status) VALUES (?, ?, ?, ?, ?)');
+            $stmt->bind_param('iissi', $client_id, $propriete_id, $date, $heure, $status);
+            $stmt->execute();
+            echo json_encode(['status' => 'success']);
+            exit;
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Adresse non trouvée']);
+            exit;
+        }
     } elseif (isset($_POST['action']) && $_POST['action'] == 'delete') {
         $id = $_POST['id'];
 
         $stmt = $conn->prepare('DELETE FROM rendezvous WHERE id = ?');
-        $stmt->execute([$id]);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
         echo json_encode(['status' => 'success']);
         exit;
     }
@@ -89,17 +103,15 @@ while ($row = $stmt->fetch_assoc()) {
         <h2>Connexion :</h2>
         <form class="votre-compte-form" method="POST" action="gestion_rdv.php">
             <input type="hidden" name="action" value="add">
-            <label for="agent_id">Agent ID :</label>
-            <input type="text" id="agent_id" name="agent_id" required>
             
-            <label for="propriete_id">Propriété ID :</label>
-            <input type="text" id="propriete_id" name="propriete_id" required>
+            <label for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" required>
             
             <label for="date">Date :</label>
             <input type="date" id="date" name="date" required>
             
             <label for="heure">Heure :</label>
-            <input type="heure" id="heure" name="heure" required>
+            <input type="time" id="heure" name="heure" required>
             
             <button type="submit" class="votre-compte-button">Ajouter rendez-vous</button>
         </form>
@@ -132,10 +144,9 @@ while ($row = $stmt->fetch_assoc()) {
                 events: rendezvous,
                 dateClick: function(info) {
                     var dateStr = info.dateStr;
-                    var title = prompt('Entrez le titre du rendez-vous:');
                     var adresse = prompt('Entrez l\'adresse de la propriété:');
                     var heure = prompt('Entrez l\'heure du rendez-vous (HH:MM):');
-                    if (title && adresse && heure) {
+                    if (adresse && heure) {
                         fetch('rdv.php', {
                             method: 'POST',
                             headers: {
@@ -143,8 +154,6 @@ while ($row = $stmt->fetch_assoc()) {
                             },
                             body: new URLSearchParams({
                                 action: 'add',
-                                agent_id: '', // Notez que l'agent_id n'est pas inclus ici, assurez-vous d'ajuster cette partie selon vos besoins
-                                propriete_id: '', // Notez que le propriete_id n'est pas inclus ici, assurez-vous d'ajuster cette partie selon vos besoins
                                 adresse: adresse,
                                 date: dateStr,
                                 heure: heure
@@ -154,6 +163,8 @@ while ($row = $stmt->fetch_assoc()) {
                             if (data.status === 'success') {
                                 calendar.refetchEvents();
                                 alert('Rendez-vous créé avec succès.');
+                            } else {
+                                alert('Erreur: ' + data.message);
                             }
                           });
                     }
@@ -185,4 +196,3 @@ while ($row = $stmt->fetch_assoc()) {
     </script>
 </body>
 </html>
-
