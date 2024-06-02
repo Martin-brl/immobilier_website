@@ -25,7 +25,7 @@ if(!@$_SESSION['user_id']) die("not logged");
                 <li><a href="index.php"><img src="accueil.jpeg" alt="Accueil"></a></li>
                 <li><a href="toutparcourir.php"><img src="Tout_parcourir.png" alt="Tout parcourir"></a></li>
                 <li><a href="recherche.php"><img src="rechercher.jpeg" alt="Rechercher"></a></li>
-                <li><a href="page_rdv/rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
+                <li><a href="rdv/rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
                 <li><a href="connexion.php"><img src="Votre_compte.png" alt="Votre Compte"></a></li>
             </ul>
         </nav>
