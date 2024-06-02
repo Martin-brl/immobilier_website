@@ -18,7 +18,7 @@ session_start();
             padding: 20px;
             border-radius: 5px;
             max-width: 400px;
-            margin: 20px auto;
+             margin: 150px auto 20px auto; /* Ajout de margin-top de 90px */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
