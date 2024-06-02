@@ -7,30 +7,35 @@ if(!@$_SESSION['user_id']) die("not logged");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omnes Immobilier - Rendez-vous</title>
-    <link rel="stylesheet" href="styles.css">
-     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>Omnes Immobilier - Tout Parcourir</title>
+    <link rel="stylesheet" href="ToutParcourir.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <img src="logo.png" alt="Omnes Immobilier Logo" class="logo">
-            <img src="titre.jpg" alt="Titre" class="titre-image">
-        </div>
-        <nav class="header-right">
-            <ul>
-                <li><a href="index.php"><img src="accueil.jpeg" alt="Accueil"></a></li>
-                <li><a href="toutparcourir.php"><img src="Tout_parcourir.png" alt="Tout parcourir"></a></li>
-                <li><a href="recherche.php"><img src="rechercher.jpeg" alt="Rechercher"></a></li>
-                <li><a href="rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
-                <li><a href="connexion.php"><img src="Votre_compte.png" alt="Votre Compte"></a></li>
-            </ul>
-        </nav>
-    </header>
-<!-- ************************************************************************************************************************-->
 
-<!-- Contenu spécifique à la page "Tout Parcourir" -->
+      <!-- **************************************************************************************-->
+        <header>
+            <div class="header-left">
+                <img src="logo.png" alt="Omnes Immobilier Logo" class="logo">
+                <img src="titre.jpg" alt="Titre" class="titre-image">
+                <div><?php echo $_SESSION['user_prenom'],' ', $_SESSION['user_nom']; ?></div>
+            </div>
+        <nav class="header-right">
+        <ul>
+            <li><a href="index.php"><img src="accueil.jpeg" alt="Accueil"></a></li>
+            <li><a href="toutparcourir.php"><img src="Tout_parcourir.png" alt="Tout parcourir"></a></li>
+            <li><a href="recherche.php"><img src="rechercher.jpeg" alt="Rechercher"></a></li>
+            <li><a href="rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
+            <li><a href="connexion.php"><img src="Votre_compte.png" alt="Votre Compte"></a></li>
+        </ul>
+        </nav>
+
+        </header>
+<!-- **************************************************************************************-->
+
+    <!-- Contenu spécifique à la page "Tout Parcourir" -->
     <div class="wrapper" id="capture-content">
         <div class="categories">
             <h2>Tout Parcourir</h2>
@@ -94,3 +99,49 @@ if(!@$_SESSION['user_id']) die("not logged");
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>Contactez-nous:</p>
+        <p>Email: contact@omnesimmobilier.com</p>
+        <p>Téléphone: 06 98 26 84 48</p>
+        <p>Adresse: 10 rue Sextius Michel, 75015 Paris</p>
+        <div id="map"></div>
+    </footer>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+        // Initialiser la carte
+        var map = L.map('map').setView([48.8512225, 2.2886441], 15);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([48.8512225, 2.2886441]).addTo(map)
+            .bindPopup('<h3>10 rue Sextius Michel, 75015 Paris</h3>')
+            .openPopup();
+
+        $(document).ready(function(){
+            $('.carousel').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>'
+            });
+
+            $("#capture-btn").click(function() {
+                html2canvas($("#capture-content")[0]).then(canvas => {
+                    let link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/jpeg');
+                    link.download = 'capture.jpg';
+                    link.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
