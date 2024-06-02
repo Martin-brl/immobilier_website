@@ -51,12 +51,12 @@ if(!@$_SESSION['user_id']) die("not logged");
             <h3>Immobilier Résidentiel</h3>
             <button class="agents-button" onclick="window.location.href='agents_residentiel.html'">Nos agents immobiliers</button>
             <div class="carousel">
-                <div><a href="propriete1.html"><img src="annonce1.jpg" alt="Annonce 1"></a></div>
-                <div><a href="propriete2.html"><img src="annonce2.jpg" alt="Annonce 2"></a></div>
-                <div><a href="propriete3.html"><img src="annonce3.jpg" alt="Annonce 3"></a></div>
-                <div><a href="propriete4.html"><img src="annonce4.jpg" alt="Annonce 4"></a></div>
-                <div><a href="propriete5.html"><img src="annonce5.jpg" alt="Annonce 5"></a></div>
-                <div><a href="propriete6.html"><img src="annonce6.jpg" alt="Annonce 6"></a></div>
+                <div><a href="propriete1.html"><img src="annonce1.jpeg" alt="Annonce 1"></a></div>
+                <div><a href="propriete2.html"><img src="annonce2.jpeg" alt="Annonce 2"></a></div>
+                <div><a href="propriete3.html"><img src="annonce3.jpeg" alt="Annonce 3"></a></div>
+                <div><a href="propriete4.html"><img src="annonce4.jpeg" alt="Annonce 4"></a></div>
+                <div><a href="propriete5.html"><img src="annonce5.jpeg" alt="Annonce 5"></a></div>
+                <div><a href="propriete6.html"><img src="annonce6.jpeg" alt="Annonce 6"></a></div>
             </div>
         </div>
 
@@ -64,12 +64,12 @@ if(!@$_SESSION['user_id']) die("not logged");
             <h3>Immobilier Commercial</h3>
             <button class="agents-button" onclick="window.location.href='agents_commercial.html'">Nos agents immobiliers</button>
             <div class="carousel">
-                <div><a href="propriete7.html"><img src="annonce1.jpg" alt="Annonce 1"></a></div>
-                <div><a href="propriete8.html"><img src="annonce2.jpg" alt="Annonce 2"></a></div>
-                <div><a href="propriete9.html"><img src="annonce3.jpg" alt="Annonce 3"></a></div>
-                <div><a href="propriete10.html"><img src="annonce4.jpg" alt="Annonce 4"></a></div>
-                <div><a href="propriete11.html"><img src="annonce5.jpg" alt="Annonce 5"></a></div>
-                <div><a href="propriete12.html"><img src="annonce6.jpg" alt="Annonce 6"></a></div>
+                <div><a href="propriete7.html"><img src="annonce1.jpeg" alt="Annonce 1"></a></div>
+                <div><a href="propriete8.html"><img src="annonce2.jpeg" alt="Annonce 2"></a></div>
+                <div><a href="propriete9.html"><img src="annonce3.jpeg" alt="Annonce 3"></a></div>
+                <div><a href="propriete10.html"><img src="annonce4.jpeg" alt="Annonce 4"></a></div>
+                <div><a href="propriete11.html"><img src="annonce5.jpeg" alt="Annonce 5"></a></div>
+                <div><a href="propriete12.html"><img src="annonce6.jpeg" alt="Annonce 6"></a></div>
             </div>
         </div>
 

@@ -1,0 +1,200 @@
+/* En-tête */
+header {
+    position: fixed; /* Pour fixer l'en-tête en haut de la fenêtre */
+    top: 0; /* Pour positionner l'en-tête tout en haut de la fenêtre */
+    left: 0; /* Pour positionner l'en-tête tout à gauche */
+    width: 100%; /* Pour que l'en-tête occupe toute la largeur */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 2px solid #ccc;
+    background-color: #117a85; /* Couleur de fond pour le header */
+    z-index: 1000; /* Assurez-vous que l'en-tête est au-dessus du reste du contenu */
+}
+
+.logo {
+    max-height: 120px;
+    border-radius: 50%; /* Mettre le logo sous forme de rond */
+}
+
+.titre-image {
+    max-height: 100px;
+    margin-left: 10px; /* Ajustez si nécessaire pour l'espacement entre le logo et le titre */
+    font-size: 24px; /* Augmenter la taille du titre */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0;
+    transition: transform 0.3s;
+}
+
+nav ul li a img {
+    display: block;
+    height: 45px; /* Adjust the height as needed */
+    width: 45px;  /* Adjust the width to be the same as the height for a perfect circle */
+    border-radius: 50%; /* Make the images round */
+    transition: transform 0.3s;
+}
+
+nav ul li a:hover img {
+    transform: scale(1.3); /* Enlarge the image slightly on hover */
+}
+
+section {
+    margin-top: 70px; /* Ajuster le décalage en fonction de la hauteur de l'en-tête */
+    padding-top: 80px; 
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+section h2, section h3 {
+    color: #117a85;
+}
+
+/**************************************************************************************************************/
+body {
+    font-family: 'Lexend', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 180px;
+}
+
+.categories {
+    margin-bottom: 20px;
+}
+
+.categories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categories li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.categories a {
+    text-decoration: none;
+    color: #70726E;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.categories a:hover {
+    color: #70726E;
+}
+
+.category {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.category h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.carousel {
+    margin-top: 20px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 200px; /* Définir une hauteur fixe pour toutes les images */
+    object-fit: cover; /* Ajuster l'image pour remplir la zone tout en conservant son aspect */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel .slick-prev,
+.carousel .slick-next {
+    background-color: #117a85;
+    border: none;
+}
+
+#capture-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #117a85;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#capture-btn:hover {
+    background-color: #0e6169;
+}
+
+.agents-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #117a85;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 850px; /* Ajustez cette valeur pour déplacer le bouton plus à droite */
+}
+
+.agents-button:hover {
+    background-color: #0a5a5e;
+}
+
+.carousel {
+    margin-top: 10px;
+}
+/* Footer */
+footer {
+
+    margin: 20px 0;
+    padding: 20px;
+    padding-top : 50px;
+    border-top: 2px solid #ccc;
+    text-align: center;
+}
+
+footer p {
+    color: #117a85;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* ********************************/
+
+
