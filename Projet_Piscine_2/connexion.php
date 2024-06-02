@@ -93,6 +93,9 @@ echo '</section>';
                 
                 <button type="submit" class="votre-compte-button">Se connecter</button>
             </form>
+            <form method="POST" action="deconnexion.php">
+                <button type="submit" class="votre-compte-button">Se déconnecter</button>
+            </form>
         </section>
     </div>
 <!-- ************************************************************************************************************************-->
