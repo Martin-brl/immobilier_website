@@ -1,0 +1,108 @@
+body {
+    font-family: 'Lexend', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.categories {
+    margin-bottom: 20px;
+}
+
+.categories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categories li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.categories a {
+    text-decoration: none;
+    color: #70726E;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.categories a:hover {
+    color: #70726E;
+}
+
+.category {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.category h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.carousel {
+    margin-top: 20px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 200px; /* Définir une hauteur fixe pour toutes les images */
+    object-fit: cover; /* Ajuster l'image pour remplir la zone tout en conservant son aspect */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel .slick-prev,
+.carousel .slick-next {
+    background-color: #117a85;
+    border: none;
+}
+
+#capture-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #117a85;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#capture-btn:hover {
+    background-color: #0e6169;
+}
+
+.agents-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #117a85;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 850px; /* Ajustez cette valeur pour déplacer le bouton plus à droite */
+}
+
+.agents-button:hover {
+    background-color: #0a5a5e;
+}
+
+.carousel {
+    margin-top: 10px;
+}

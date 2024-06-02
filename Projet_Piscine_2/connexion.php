@@ -31,7 +31,7 @@
 <div class="wrapper">
         <section class="votre-compte-container">
             <h2>Connexion :</h2>
-            <form class="votre-compte-form" method="GET" action="traitement_votrecompte.php">
+            <form class="votre-compte-form" method="POST" action="traitement_votrecompte.php">
                                                 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>

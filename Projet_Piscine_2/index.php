@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(!@$_SESSION['user_id']) die("not logged");   
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,15 +33,16 @@
             <div class="header-left">
                 <img src="logo.png" alt="Omnes Immobilier Logo" class="logo">
                 <img src="titre.jpg" alt="Titre" class="titre-image">
+                <div><?php echo $_SESSION['user_prenom'],' ', $_SESSION['user_nom']; ?></div>
             </div>
-           <nav class="header-right">
-    <ul>
-        <li><a href="index.php"><img src="accueil.jpeg" alt="Accueil"></a></li>
-        <li><a href="toutparcourir.php"><img src="Tout_parcourir.png" alt="Tout parcourir"></a></li>
-        <li><a href="recherche.php"><img src="rechercher.jpeg" alt="Rechercher"></a></li>
-        <li><a href="rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
-        <li><a href="connexion.php"><img src="Votre_compte.png" alt="Votre Compte"></a></li>
-    </ul>
+        <nav class="header-right">
+        <ul>
+            <li><a href="index.php"><img src="accueil.jpeg" alt="Accueil"></a></li>
+            <li><a href="toutparcourir.php"><img src="Tout_parcourir.png" alt="Tout parcourir"></a></li>
+            <li><a href="recherche.php"><img src="rechercher.jpeg" alt="Rechercher"></a></li>
+            <li><a href="rdv.php"><img src="Rendez_vous.png" alt="Rendez-vous"></a></li>
+            <li><a href="connexion.php"><img src="Votre_compte.png" alt="Votre Compte"></a></li>
+        </ul>
         </nav>
 
         </header>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,32 +13,38 @@ $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Vérifier la connexion
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    alert("erreur de connexion à la bas de donnée");
 }
 
-$email = $_GET['email'];
-$mdp = $_GET['mdp'];
-// Construire la requête SQL    
-$sql = "SELECT * FROM utilisateurs WHERE 1=1";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $mdp = $_POST['mdp'];
 
-if (!empty($email)) {
-    $sql .= " AND email LIKE '" . $conn->real_escape_string($email) . "'";
-}
+    // Requête SQL pour vérifier les informations de connexion
+    $sql = "SELECT id, prenom, nom FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        // Lier les paramètres
+        $stmt->bind_param("ss", $email, $mdp);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-if (!empty($mdp)) {
-    $sql .= " AND mot_de_passe LIKE '" . $conn->real_escape_string($mdp) . "'";
-}
-print($sql);
-$result = $conn->query($sql);
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_prenom'] = $row['prenom'];
+            $_SESSION['user_nom'] = $row['nom'];
 
+            // Redirection vers la page d'accueil
+            header("Location: index.php");
+            exit();
+        } else {
+            echo "Email ou mot de passe incorrect.";
+        }
 
-if ($result->num_rows > 0) {
-    echo "<h2>Résultats de la recherche</h2>";
-    while($row = $result->fetch_assoc()) {
-        echo "ID: " . $row["id"]. " - Prénom: " . $row["prenom"]. " - Nom: " . $row["nom"]. " - email: " . $row["email"]. " - Adresse: " . $row["adresse"]. " - telephone: " . $row["telephone"]. "<br>";
+        $stmt->close();
+    } else {
+        echo "Erreur de préparation de la requête: " . $conn->error;
     }
-} else {
-    echo "0 résultats";
 }
 
 $conn->close();
