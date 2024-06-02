@@ -383,3 +383,37 @@ body.votre-compte-page {
 .votre-compte-button:hover {
     background-color: #0e6b70;
 }
+/*************************************************************************/
+
+.user-info {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info p {
+    margin: 10px 0;
+}
+
+.user-info .label {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-info p:nth-child(odd) {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.user-info p:nth-child(even) {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 3px;
+}
+
