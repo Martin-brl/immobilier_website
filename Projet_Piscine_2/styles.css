@@ -383,3 +383,7 @@ body.votre-compte-page {
 .votre-compte-button:hover {
     background-color: #0e6b70;
 }
+
+.splash-content {
+    padding: 20px;
+}
