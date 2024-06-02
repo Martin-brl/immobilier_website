@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(!@$_SESSION['user_id']) die("not logged");   
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +18,7 @@
         <div class="header-left">
             <img src="logo.png" alt="Omnes Immobilier Logo" class="logo">
             <img src="titre.jpg" alt="Titre" class="titre-image">
+            <?php echo @$_SESSION['user_prenom'],' ', @$_SESSION['user_nom'],'--', @$_SESSION['user_email'], '--', @$_SESSION['user_adresse'],'--', @$_SESSION['user_type'],'--', @$_SESSION['user_telephone']; ?>
         </div>
 
         <nav class="header-right">

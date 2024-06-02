@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mdp = $_POST['mdp'];
 
     // Requête SQL pour vérifier les informations de connexion
-    $sql = "SELECT id, prenom, nom FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
+    $sql = "SELECT * FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
     $stmt = $conn->prepare($sql);
     if ($stmt) {
         // Lier les paramètres
@@ -33,6 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_prenom'] = $row['prenom'];
             $_SESSION['user_nom'] = $row['nom'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_type'] = $row['type'];
+            $_SESSION['user_adresse'] = $row['adresse'];
+            $_SESSION['user_telephone'] = $row['telephone'];
 
             // Redirection vers la page d'accueil
             header("Location: index.php");

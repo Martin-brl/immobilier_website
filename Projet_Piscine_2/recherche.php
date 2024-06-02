@@ -28,7 +28,7 @@
     <section>
         <h2>Trouvez la propriété de vos rêves</h2>
         <form action="search.php" method="GET">
-            <input type="text" name="location" placeholder="Lieu">
+            <input type="text" name="location" placeholder="Ville">
             <input type="number" name="min_price" placeholder="Prix Minimum" min="0">
             <input type="number" name="max_price" placeholder="Prix Maximum" min="0">
             <select name="property_type">
